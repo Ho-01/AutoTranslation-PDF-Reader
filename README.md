@@ -1,6 +1,7 @@
 # AutoTranslation-PDF-Reader
 Auto translates your pdf file while reading and dragging texts. works on web browser, using PDF.js
 
+
 # 사용자 가이드
 자동 번역 기능이 추가된 PDF.js Viewer 사용 방법을 설명합니다.
 
@@ -28,3 +29,34 @@ Auto translates your pdf file while reading and dragging texts. works on web bro
 - 툴바가 보이지 않음 : 상단 툴바의 "Translate" 버튼을 눌러 번역 툴바가 숨겨져 있지 않은지 확인합니다.
 
   
+# 개발자 가이드
+
+## 시스템 요구 사항
+- 하드웨어 : 표준 웹 서버 및 로컬 개발 환경
+- 소프트웨어
+  프론트엔드 : HTML, CSS, JavaScript, PDF.js
+  백엔드 : Node.js, Express.js
+  API : Google Cloud Translation API
+
+## 구현 내용
+1. 번역 툴바
+- 'viewer.html' 파일 내에 번역 툴바를 위한 <div> 요소를 추가합니다.
+- 'viewer.css' 파일을 사용하여 뷰어 내에서 적절한 위치에 툴바를 스타일링합니다.
+
+2. JavaScript 로직
+- 번역 관련 기능을 처리하기 위해 'translate.js' 파일을 생성합니다.
+- 텍스트 선택 및 버튼 클릭 이벤트 리스너를 추가하여 번역 툴바의 가시성을 토글합니다.
+- 'navigator.language' 속성을 사용하여 브라우저의 언어 설정을 감지합니다.
+
+3. API 통합
+- Google Cloud Translation API에서 API 키를 얻습니다.
+- 선택한 텍스트를 API에 보내고 번역된 텍스트를 툴바에 표시하는 번역 함수를 구현합니다.
+
+4. 언어 감지
+- 선택한 텍스트의 언어를 식별하기 위해 API의 'detectLanguage' 기능을 사용합니다.
+- 툴바를 수정하여 감지된 언어를 표시하고 사용자가 수동으로 대상 언어를 선택할 수 있도록 합니다.
+
+## 테스트 및 배포
+- 테스트 : 다양한 PDF 문서를 로드하여 모든 기능이 예상대로 작동하는지 확인합니다.
+- 배포 : 웹 서버에 뷰어를 배포하고 환경 변수 및 API 키가 올바르게 설정되어 있는지 확인합니다.
+
